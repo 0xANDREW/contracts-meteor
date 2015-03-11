@@ -1,0 +1,107 @@
+template(name='contract')
+  h2 #{ your_name } Development Agreement
+
+  p
+    This Agreement is made this <u>{{ day }}</u> day of <u>{{ month }}</u> <u>{{ year }}</u>, between <u>{{ your_name }}</u>, having its principal place of business at <u>{{ your_address }}</u>, and <u>{{ client_name }}</u> having their principal place of business at <u>{{ client_address }}</u>. In consideration of <u>{{ client_name }}</u> retaining <u>{{ your_name }}</u> to conduct an independent service for <u>{{ client_name }}</u>, it is agreed as follows:
+
+  ol
+    li 
+      h4 Compensation and Terms
+    
+      // #{ #your_resp }
+      // p
+      //   <u>#{ your_name }</u> will perform the following jobs:
+      //   pre #{ your_resp }
+      // {{ /your_resp }}
+
+      // {{ #client_resp }}
+      // %p
+      //   <u>{{ client_name }}</u> will provide the following:
+      //   %pre {{ client_resp }}
+      // {{ /client_resp }}
+
+      // {{ #time_detail }}
+      // %p
+      //   Time Detail:
+      //   %pre {{ time_detail }}
+      // {{ /time_detail }}
+
+      p
+        The following fees shall apply:
+        ul
+          // {{ #rate }}
+          // %li <%text>$</%text><u>{{ rate }}</u>/hr for development to be paid within two weeks of invoice date
+          // {{ /rate }}
+
+          // {{ #fee }}
+          // %li <%text>$</%text><u>{{ fee }}</u> flat fee
+          // {{ /fee }}
+
+      li
+        h4 Confidentiality
+        p
+          This Agreement creates a confidential relationship between <u>{{ your_name }}</u> and <u>{{ client_name }}</u>. Information concerning <u>{{ your_name }}</u>'s and/or <u>{{ client_name }}</u>'s business affairs, vendors, finances, properties, methods of operation, computer programs, employees, documentation, and other such information whether written, oral, or otherwise, is confidential in nature. <u>{{ your_name }}</u>, <u>{{ client_name }}</u> and employees of both will adhere fully to this confidentiality agreement.
+
+      li
+        h4 Governing Law
+        p
+          This agreement shall be binding upon the heirs and assigns of the parties and shall be governed by and interpreted according to the laws of the State of Massachusetts.
+
+      li
+        h4 Liability
+        p
+          <u>{{ your_name }}</u> shall not be held responsible to <u>{{ client_name }}</u> or any third party for damages, including lost profits, lost savings, or other incidental, consequential, or special damages arising out of the operation of or inability to operate this project, even if <u>{{ your_name }}</u> has been advised of the possibilities of such damages.
+
+      li
+        h4 Entire Agreement
+        p
+          This agreement represents the full understanding between the parties and there is no other agreement, oral or written, between them, and that this agreement may not be modified without an agreement in writing signed by the party to be charged. This contract is in effect until written notification of termination from either party.
+
+      li
+        h4 Notices
+        p
+          All notices or other documents under this agreement shall be in writing and delivered personally or fax received, or mailed by certified mail, postage prepaid, addressed to <u>{{ your_name }}</u> and <u>{{ client_name }}</u> at their last known addresses.
+
+      li
+        h4 Single Points of Contact
+        p
+          <u>{{ your_name }}</u>'s single point of contact will be <u>{{ your_contact }}</u> (<u>{{ your_email }}</u>). <u>{{ client_name }}</u>'s single point of contact will be <u>{{ client_contact }}</u> (<u>{{ client_email }}</u>).  All correspondence concerning the project will be handled between <u>{{ your_contact }}</u> and <u>{{ client_contact }}</u>.  All correspondence sent from other employees of the companies will be ignored and forwarded to the respective single point of contact.
+
+      // {{ #ownership }}
+      // %li
+      //   %h4 Source Files and Copyrights
+      //   %p
+      //     <u>{{ your_name }}</u> will retain all source files including their copyrights. <u>{{ your_name }}</u> will grant <u>{{ client_name }}</u> a non-exclusive license for the source files.
+      // {{ /ownership }}
+
+      // {{ #timeout }}
+      // %li
+      //   %h4 Agreement Timeout
+      //   %p
+      //     <u>{{ client_name }}</u> is responsible for supplying all needed content to <u>{{ your_name }}</u> by <u>{{ timeout }}</u>.
+      // {{ /timeout }}
+
+  .page-break
+
+  %h3 ACCEPTED AND AGREED:
+  
+  .grid_6 <u>{{ your_name }}</u>
+  .grid_6 <u>{{ client_name }}</u>
+  .spacer-medium
+  .spacer-medium
+    
+  .grid_1 BY:
+  .grid_5.sig
+  .grid_6 
+    %div BY: ______________________
+    .spacer-small
+    %div (signature)
+  .spacer-medium
+    
+  .grid_6 <u>{{ your_contact }}</u>
+  .grid_6 <u>{{ client_contact }}</u>
+  .spacer-medium
+    
+  .grid_6 Date: <u>{{ date }}</u>
+  .grid_6 Date: ____________________
+  .clear

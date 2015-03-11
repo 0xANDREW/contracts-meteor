@@ -1,0 +1,93 @@
+template(name='form')
+  +with contract
+    .form-horizontal
+      .form-group
+        label.col-md-2.control-label Date
+        .col-md-3
+          input#date.form-control(value="#{ date }")
+  
+      .form-group
+        label.col-md-2.control-label Title
+        .col-md-3
+          input#title.form-control(value="#{ title }")
+  
+      .form-group
+        label.col-md-2.control-label Your company
+        .col-md-3
+          input#your_company.form-control(value="#{ your_company }")
+  
+      .form-group
+        label.col-md-2.control-label Your address
+        .col-md-3
+          input#your_address.form-control
+  
+      .form-group
+        label.col-md-2.control-label Your contact
+        .col-md-3
+          input#your_contact.form-control
+  
+      .form-group
+        label.col-md-2.control-label Your email
+        .col-md-3
+          input#your_email.form-control
+  
+      .form-group
+        label.col-md-2.control-label Client name
+        .col-md-3
+          input#client_name.form-control
+  
+      .form-group
+        label.col-md-2.control-label Client address
+        .col-md-3
+          input#client_address.form-control
+  
+      .form-group
+        label.col-md-2.control-label Client contact
+        .col-md-3
+          input#client_contact.form-control
+  
+      .form-group
+        label.col-md-2.control-label Client email
+        .col-md-3
+          input#client_email.form-control
+  
+      .form-group
+        label.col-md-2.control-label Client responsibilities
+        .col-md-3
+          textarea#client_resp.form-control
+  
+      .form-group
+        label.col-md-2.control-label Your responsibilities
+        .col-md-3
+          textarea#your_resp.form-control
+  
+      .form-group
+        label.col-md-2.control-label Time detail
+        .col-md-3
+          textarea#time_detail.form-control
+  
+      .form-group
+        label.col-md-2.control-label Rate
+        .col-md-3
+          input#rate.form-control
+  
+      .form-group
+        label.col-md-2.control-label Fee
+        .col-md-3
+          input#fee.form-control
+  
+      .form-group
+        label.col-md-2.control-label Timeout date
+        .col-md-3
+          input#timeout.form-control
+  
+      .form-group
+        label.col-md-2.control-label Retain ownership
+        .col-md-3
+          .checkbox 
+            input#ownership(type='checkbox')
+
+    .btn-group
+      button#generate.btn.btn-primary Generate
+      button#save.btn.btn-default Save
+      button#load.btn.btn-default Load

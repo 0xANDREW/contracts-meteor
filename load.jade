@@ -1,0 +1,13 @@
+template(name='load')
+  .row
+    button#back.btn.btn-default Back
+
+  +each contracts
+    .row(id="#{ _id }")
+      .col-md-3 #{ _id }
+      .col-md-2 #{ date }
+      .col-md-2 #{ title }
+      .col-md-2
+        .btn-group
+          button.load.btn.btn-primary Load
+          button.delete.btn.btn-danger Delete
