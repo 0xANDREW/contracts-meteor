@@ -15,6 +15,7 @@ if (Meteor.isClient){
         'click #save': function(e){
             var attrs = {};
 
+            // Iterate through input fields and set object attributes
             _.each(Template.instance().$('input, textarea'), function(el){
                 var $el = $(el);
 
@@ -50,6 +51,7 @@ if (Meteor.isClient){
     Template.form.rendered = function(){
         var tpl = Template.instance();
 
+        // Set up datepicker
         tpl.$('.datepicker').datepicker({
             dateFormat: 'yy-mm-dd'
         });
@@ -63,13 +65,15 @@ if (Meteor.isClient){
             
             // TODO: why does this break on reload?
             if (obj){
+
+                // Set checkbox status
                 tpl.$('#ownership').prop('checked', obj.ownership);
             }
         }
     };
 
     Template.form.helpers({
-        'contract': function(){
+        contract: function(){
             var cid = Session.get('cid');
 
             if (cid){
@@ -81,13 +85,16 @@ if (Meteor.isClient){
     });
 
     Template.contract.helpers({
-        'contract': function(){
+
+        // Load contract
+        contract: function(){
             var cid = Session.get('cid');
 
             if (cid){
                 var rv = Contracts.findOne({ _id: cid });
                 var date = Date.parse(rv.date);
 
+                // Add date components
                 rv.day = date.getDate();
                 rv.month = MONTH_NAMES[date.getMonth()];
                 rv.year = date.getFullYear();
@@ -99,11 +106,14 @@ if (Meteor.isClient){
         }
     });
 
+    // Show print dialog automatically
     Template.contract.rendered = function(){
         window.print();
     };
 
     Template.contract.events({
+
+        // When displaying print view, single-click goes back
         'click': function(e){
             Session.set('current_template', 'form');
         }
@@ -116,6 +126,8 @@ if (Meteor.isClient){
     });
 
     Template.load.events({
+
+        // Load contract
         'click .load': function(e){
             var cid = $(e.target).parents('.row').attr('id');
 
@@ -123,17 +135,21 @@ if (Meteor.isClient){
             Session.set('current_template', 'form');
         },
 
+        // Go back, unset cid
         'click #back': function(e){
             Session.set('cid', null);
             Session.set('current_template', 'form');
         },
 
+        // Delete contract
+        // TODO: confirmation
         'click .delete': function(e){
             var cid = $(e.target).parents('.row').attr('id');
 
             Contracts.remove(cid);
         },
 
+        // Copy contract and load
         'click .copy': function(e){
             var cid = $(e.target).parents('.row').attr('id');
 
@@ -147,14 +163,10 @@ if (Meteor.isClient){
     });
 
     Template.body.helpers({
+
+        // Set current template name for session
         current_template: function(){
             return Session.get('current_template');
         }
     });
-}
-
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
 }
