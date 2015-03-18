@@ -22,13 +22,32 @@ if (Meteor.isClient){
                 }
             });
 
-            Contracts.insert(attrs);
+            var cid = Session.get('cid');
+
+            if (cid){
+                Contracts.update(cid , attrs);
+            }
+            else {
+                Contracts.insert(attrs);
+            }
         },
 
         'click #load': function(e){
             Session.set('current_template', 'load');            
+        },
+
+        'click #clear': function(e){
+            _.each(Template.instance().$('input'), function(el){
+                $(el).val('').prop('checked', false);
+            });
         }
     });
+
+    Template.form.rendered = function(){
+        Template.instance().$('.datepicker').datepicker({
+            dateFormat: 'yy-mm-dd'
+        });
+    };
 
     Template.form.helpers({
         'contract': function(){
@@ -67,11 +86,14 @@ if (Meteor.isClient){
         },
 
         'click #back': function(e){
+            Session.set('cid', null);
             Session.set('current_template', 'form');
         },
 
         'click .delete': function(e){
-            console.log('delete');
+            var cid = $(e.target).parents('.row').attr('id');
+
+            Contracts.remove(cid);
         }
     });
 
