@@ -7,7 +7,9 @@ else {
 
 Template.form.events({
     'click #generate': function(e){
-        Session.set('current_template', 'contract');
+        if (Session.get('cid')){
+            Session.set('current_template', 'contract');
+        }
     },
 
     'click #save': function(e){
