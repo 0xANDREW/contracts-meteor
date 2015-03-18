@@ -1,4 +1,8 @@
-Contracts = new Mongo.Collection('contracts');
+var MONTH_NAMES = [ "January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"
+                  ];
+
+var Contracts = new Mongo.Collection('contracts');
 
 if (Meteor.isClient){
     Session.set('current_template', 'form');
@@ -37,16 +41,31 @@ if (Meteor.isClient){
         },
 
         'click #clear': function(e){
-            _.each(Template.instance().$('input'), function(el){
+            _.each(Template.instance().$('input, textarea'), function(el){
                 $(el).val('').prop('checked', false);
             });
         }
     });
 
     Template.form.rendered = function(){
-        Template.instance().$('.datepicker').datepicker({
+        var tpl = Template.instance();
+
+        tpl.$('.datepicker').datepicker({
             dateFormat: 'yy-mm-dd'
         });
+
+        // TODO: there's a better way to do this than querying again
+        // template data?
+        var cid = Session.get('cid');
+
+        if (cid){
+            var obj = Contracts.findOne({ _id: cid });
+            
+            // TODO: why does this break on reload?
+            if (obj){
+                tpl.$('#ownership').prop('checked', obj.ownership);
+            }
+        }
     };
 
     Template.form.helpers({
@@ -66,7 +85,14 @@ if (Meteor.isClient){
             var cid = Session.get('cid');
 
             if (cid){
-                return Contracts.findOne({ _id: cid });
+                var rv = Contracts.findOne({ _id: cid });
+                var date = Date.parse(rv.date);
+
+                rv.day = date.getDate();
+                rv.month = MONTH_NAMES[date.getMonth()];
+                rv.year = date.getFullYear();
+
+                return rv;
             }
             
             return {};            
@@ -74,7 +100,7 @@ if (Meteor.isClient){
     });
 
     Template.contract.rendered = function(){
-        // window.print();
+        window.print();
     };
 
     Template.contract.events({

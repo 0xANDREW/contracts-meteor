@@ -1,1 +1,34 @@
-/* CSS declarations go here */
+@media print {
+    .page-break {
+        display: block;
+        page-break-before: always;
+    }
+}
+
+.spacer-small {
+    clear: both;
+    min-height: 5px;
+}
+
+.spacer-medium {
+    clear: both;
+    min-height: 20px;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+#contract {
+    font-family: georgia;
+    width: 8.5in;
+}
+
+.sig {
+    background-repeat: no-repeat;
+    height: 53px;
+}
+
+pre {
+    white-space: pre-wrap;
+}
