@@ -5,7 +5,12 @@ var MONTH_NAMES = [ "January", "February", "March", "April", "May", "June",
 var Contracts = new Mongo.Collection('contracts');
 
 if (Meteor.isClient){
-    Session.set('current_template', 'form');
+    if (Meteor.userId()){
+        Session.set('current_template', 'form');
+    }
+    else {
+        Session.set('current_template', 'login');
+    }
 
     Template.form.events({
         'click #generate': function(e){

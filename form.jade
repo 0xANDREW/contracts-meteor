@@ -1,4 +1,7 @@
 template(name='form')
+  +if currentUser
+    +loginButtons
+
   +with contract
     .form-horizontal
       .form-group

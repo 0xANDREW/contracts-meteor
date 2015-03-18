@@ -12,3 +12,5 @@ twbs:bootstrap
 jquery
 mizzao:jquery-ui
 seanr:date.js
+accounts-password
+accounts-ui
