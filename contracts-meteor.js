@@ -52,7 +52,7 @@ if (Meteor.isClient){
     Template.form.helpers({
         'contract': function(){
             var cid = Session.get('cid');
-            
+
             if (cid){
                 return Contracts.findOne({ _id: cid });
             }
@@ -94,6 +94,17 @@ if (Meteor.isClient){
             var cid = $(e.target).parents('.row').attr('id');
 
             Contracts.remove(cid);
+        },
+
+        'click .copy': function(e){
+            var cid = $(e.target).parents('.row').attr('id');
+
+            var contract = Contracts.findOne(cid);
+            delete contract._id;
+            contract.title += ' copy';
+
+            Session.set('cid', Contracts.insert(contract));
+            Session.set('current_template', 'form');
         }
     });
 
