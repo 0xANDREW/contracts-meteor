@@ -6,87 +6,87 @@ template(name='form')
     .form-horizontal
       .form-group
         label.col-md-2.control-label Date
-        .col-md-4
-          input#date.form-control.datepicker(value="#{ date }")
+        .col-md-6
+          input#date.form-control.input-sm.datepicker(value="{{ date }}")
   
       .form-group
         label.col-md-2.control-label Title
-        .col-md-4
-          input#title.form-control(value="#{ title }")
+        .col-md-6
+          input#title.form-control.input-sm(value="{{ title }}")
   
       .form-group
         label.col-md-2.control-label Your company
-        .col-md-4
-          input#your_company.form-control(value="#{ your_company }")
+        .col-md-6
+          input#your_company.form-control.input-sm(value="{{ your_company }}")
   
       .form-group
         label.col-md-2.control-label Your address
-        .col-md-4
-          input#your_address.form-control(value="#{ your_address }")
+        .col-md-6
+          input#your_address.form-control.input-sm(value="{{ your_address }}")
   
       .form-group
         label.col-md-2.control-label Your contact
-        .col-md-4
-          input#your_contact.form-control(value="#{ your_contact }")
+        .col-md-6
+          input#your_contact.form-control.input-sm(value="{{ your_contact }}")
   
       .form-group
         label.col-md-2.control-label Your email
-        .col-md-4
-          input#your_email.form-control(value="#{ your_email }")
+        .col-md-6
+          input#your_email.form-control.input-sm(value="{{ your_email }}")
   
       .form-group
         label.col-md-2.control-label Client name
-        .col-md-4
-          input#client_name.form-control(value="#{ client_name }")
+        .col-md-6
+          input#client_name.form-control.input-sm(value="{{ client_name }}")
   
       .form-group
         label.col-md-2.control-label Client address
-        .col-md-4
-          input#client_address.form-control(value="#{ client_address }")
+        .col-md-6
+          input#client_address.form-control.input-sm(value="{{ client_address }}")
   
       .form-group
         label.col-md-2.control-label Client contact
-        .col-md-4
-          input#client_contact.form-control(value="#{ client_contact }")
+        .col-md-6
+          input#client_contact.form-control.input-sm(value="{{ client_contact }}")
   
       .form-group
         label.col-md-2.control-label Client email
-        .col-md-4
-          input#client_email.form-control(value="#{ client_email }")
+        .col-md-6
+          input#client_email.form-control.input-sm(value="{{ client_email }}")
   
       .form-group
         label.col-md-2.control-label Client responsibilities
-        .col-md-4
-          textarea#client_resp.form-control #{ client_resp }
+        .col-md-6
+          textarea#client_resp.form-control.input-sm(rows='5') {{ client_resp }}
   
       .form-group
         label.col-md-2.control-label Your responsibilities
-        .col-md-4
-          textarea#your_resp.form-control #{ your_resp }
+        .col-md-6
+          textarea#your_resp.form-control.input-sm(rows='5') {{ your_resp }}
   
       .form-group
         label.col-md-2.control-label Time detail
-        .col-md-4
-          textarea#time_detail.form-control #{ time_detail }
+        .col-md-6
+          textarea#time_detail.form-control.input-sm(rows='5') {{ time_detail }}
   
       .form-group
         label.col-md-2.control-label Rate
-        .col-md-4
-          input#rate.form-control(value="#{ rate }")
+        .col-md-6
+          input#rate.form-control.input-sm(value="{{ rate }}")
   
       .form-group
         label.col-md-2.control-label Fee
-        .col-md-4
-          input#fee.form-control(value="#{ fee }")
+        .col-md-6
+          input#fee.form-control.input-sm(value="{{ fee }}")
   
       .form-group
         label.col-md-2.control-label Timeout date
-        .col-md-4
-          input#timeout.form-control.datepicker(value="#{ timeout }")
+        .col-md-6
+          input#timeout.form-control.input-sm.datepicker(value="{{ timeout }}")
   
       .form-group
         label.col-md-2.control-label Retain ownership
-        .col-md-4
+        .col-md-6
           .checkbox 
             input#ownership(type='checkbox')
 
