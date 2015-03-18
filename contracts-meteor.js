@@ -11,7 +11,7 @@ if (Meteor.isClient){
         'click #save': function(e){
             var attrs = {};
 
-            _.each(Template.instance().$('input'), function(el){
+            _.each(Template.instance().$('input, textarea'), function(el){
                 var $el = $(el);
 
                 if ($el.is(':checkbox')){
@@ -61,8 +61,20 @@ if (Meteor.isClient){
         }
     });
 
+    Template.contract.helpers({
+        'contract': function(){
+            var cid = Session.get('cid');
+
+            if (cid){
+                return Contracts.findOne({ _id: cid });
+            }
+            
+            return {};            
+        }
+    });
+
     Template.contract.rendered = function(){
-        window.print();
+        // window.print();
     };
 
     Template.contract.events({

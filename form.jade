@@ -19,67 +19,67 @@ template(name='form')
       .form-group
         label.col-md-2.control-label Your address
         .col-md-4
-          input#your_address.form-control
+          input#your_address.form-control(value="#{ your_address }")
   
       .form-group
         label.col-md-2.control-label Your contact
         .col-md-4
-          input#your_contact.form-control
+          input#your_contact.form-control(value="#{ your_contact }")
   
       .form-group
         label.col-md-2.control-label Your email
         .col-md-4
-          input#your_email.form-control
+          input#your_email.form-control(value="#{ your_email }")
   
       .form-group
         label.col-md-2.control-label Client name
         .col-md-4
-          input#client_name.form-control
+          input#client_name.form-control(value="#{ client_name }")
   
       .form-group
         label.col-md-2.control-label Client address
         .col-md-4
-          input#client_address.form-control
+          input#client_address.form-control(value="#{ client_address }")
   
       .form-group
         label.col-md-2.control-label Client contact
         .col-md-4
-          input#client_contact.form-control
+          input#client_contact.form-control(value="#{ client_contact }")
   
       .form-group
         label.col-md-2.control-label Client email
         .col-md-4
-          input#client_email.form-control
+          input#client_email.form-control(value="#{ client_email }")
   
       .form-group
         label.col-md-2.control-label Client responsibilities
         .col-md-4
-          textarea#client_resp.form-control
+          textarea#client_resp.form-control #{ client_resp }
   
       .form-group
         label.col-md-2.control-label Your responsibilities
         .col-md-4
-          textarea#your_resp.form-control
+          textarea#your_resp.form-control #{ your_resp }
   
       .form-group
         label.col-md-2.control-label Time detail
         .col-md-4
-          textarea#time_detail.form-control
+          textarea#time_detail.form-control #{ time_detail }
   
       .form-group
         label.col-md-2.control-label Rate
         .col-md-4
-          input#rate.form-control
+          input#rate.form-control(value="#{ rate }")
   
       .form-group
         label.col-md-2.control-label Fee
         .col-md-4
-          input#fee.form-control
+          input#fee.form-control(value="#{ fee }")
   
       .form-group
         label.col-md-2.control-label Timeout date
         .col-md-4
-          input#timeout.form-control.datepicker
+          input#timeout.form-control.datepicker(value="#{ timeout }")
   
       .form-group
         label.col-md-2.control-label Retain ownership
