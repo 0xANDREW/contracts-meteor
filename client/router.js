@@ -3,6 +3,10 @@ Router.configure({
 });
 
 Router.route('/', function(){
+    this.redirect('contract');
+});
+
+Router.route('/contract', function(){
     this.render('form', {
         data: {
             contract: {}
@@ -10,11 +14,7 @@ Router.route('/', function(){
     });
 });
 
-Router.route('/form', function(){
-    this.render('form');
-});
-
-Router.route('/form/:cid', function(){
+Router.route('/contract/:cid', function(){
     this.render('form', {
         data: {
             contract: GLOBS.CONTRACTS.findOne(this.params.cid)
@@ -30,7 +30,7 @@ Router.route('/load', function(){
     });
 });
 
-Router.route('/generate/:cid', function(){
+Router.route('/contract/:cid/generate', function(){
     var rv = GLOBS.CONTRACTS.findOne(this.params.cid);
     var date = Date.parse(rv.date);
 

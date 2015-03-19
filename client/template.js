@@ -19,7 +19,7 @@ Template.form.events({
         }
         else {
             Meteor.call('new_contract', attrs, function(err, new_cid){
-                Router.current().redirect('/form/' + new_cid);
+                Router.current().redirect(s.sprintf('/contract/%s', new_cid));
             });
         }
     },
@@ -57,7 +57,7 @@ Template.contract.events({
 
     // When displaying print view, single-click goes back
     'click': function(e){
-        Router.current().redirect('/form/' + this._id);
+        Router.current().redirect(s.sprintf('/contract/%s', this._id));
     }
 });
 

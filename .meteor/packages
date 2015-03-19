@@ -14,3 +14,4 @@ seanr:date.js
 accounts-password
 accounts-ui
 iron:router
+underscorestring:underscore.string
