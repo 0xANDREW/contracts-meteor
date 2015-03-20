@@ -1,4 +1,8 @@
 template(name='wrapper')
+  +if currentUser
+    +loginButtons
+
   .container-fluid
+    +flashMessages  
     +yield
   

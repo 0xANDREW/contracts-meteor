@@ -1,3 +1,7 @@
+FlashMessages.configure({
+    autoHide: false
+});
+
 Template.form.events({
     'click #save': function(e){
         var attrs = {};
@@ -26,16 +30,20 @@ Template.form.events({
         if (this._id){
             Meteor.call('update_contract', this._id, attrs, function(err){
                 if (err){
-                    console.error(err.reason.reason);
+                    FlashMessages.sendError(err.reason.reason);
+                }
+                else {
+                    FlashMessages.clear();
                 }
             });
         }
         else {
             Meteor.call('new_contract', attrs, function(err, new_cid){
                 if (err){
-                    console.error(err.reason.reason);
+                    FlashMessages.sendError(err.reason.reason);
                 }
                 else {
+                    FlashMessages.clear();
                     Router.current().redirect(s.sprintf('/contract/%s', new_cid));
                 }
             });
@@ -47,6 +55,7 @@ Template.form.events({
             $(el).val('').prop('checked', false);
         });
 
+        FlashMessages.clear();
         Router.current().redirect('/');
     },
 
