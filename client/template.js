@@ -40,11 +40,10 @@ Template.form.rendered = function(){
         dateFormat: 'yy-mm-dd'
     });
 
-    if (this.data.contract._id){
-        var obj = GLOBS.CONTRACTS.findOne(this.data.contract._id);
+    if (this.data.contract){
         
         // Set checkbox status
-        this.$('#ownership').prop('checked', obj.ownership);
+        this.$('#ownership').prop('checked', this.data.contract.ownership);
     }
 };
 
