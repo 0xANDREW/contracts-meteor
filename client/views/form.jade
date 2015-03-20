@@ -7,7 +7,7 @@ template(name='form')
       .form-group
         label.col-md-2.control-label Date
         .col-md-6
-          input#date.form-control.input-sm.datepicker(value="{{ date }}")
+          input#date.form-control.input-sm.datepicker(value="{{ pretty_date date }}")
   
       .form-group
         label.col-md-2.control-label Title
@@ -81,7 +81,7 @@ template(name='form')
       .form-group
         label.col-md-2.control-label Timeout date
         .col-md-3
-          input#timeout.form-control.input-sm.datepicker(value="{{ timeout }}")
+          input#timeout.form-control.input-sm.datepicker(value="{{ pretty_date timeout }}")
   
         label.col-md-2.control-label Retain ownership
         .col-md-2
@@ -92,7 +92,7 @@ template(name='form')
       button#save.btn.btn-primary Save
       a#load.btn.btn-default(href='/load') Load
       button#clear.btn.btn-danger Clear
+      button#autofill.btn.btn-default Autofill
       
       +if _id
         a#generate.btn.btn-default(href='/contract/{{ _id }}/generate') Generate
-

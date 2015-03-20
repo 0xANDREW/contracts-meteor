@@ -5,21 +5,39 @@ Template.form.events({
         // Iterate through input fields and set object attributes
         _.each(Template.instance().$('input, textarea'), function(el){
             var $el = $(el);
+            var val = $el.val();
+            var id = $el.attr('id');
 
             if ($el.is(':checkbox')){
-                attrs[$el.attr('id')] = $el.prop('checked');
+                attrs[id] = $el.prop('checked');
             }
             else {
-                attrs[$el.attr('id')] = $el.val();
+
+                // Set empty values to null
+                if (val.length){
+                    attrs[id] = val;
+                }
+                else {
+                    attrs[id] = null;
+                }
             }
         });
 
         if (this._id){
-            Meteor.call('update_contract', this._id, attrs);
+            Meteor.call('update_contract', this._id, attrs, function(err){
+                if (err){
+                    console.error(err.reason.reason);
+                }
+            });
         }
         else {
             Meteor.call('new_contract', attrs, function(err, new_cid){
-                Router.current().redirect(s.sprintf('/contract/%s', new_cid));
+                if (err){
+                    console.error(err.reason.reason);
+                }
+                else {
+                    Router.current().redirect(s.sprintf('/contract/%s', new_cid));
+                }
             });
         }
     },
@@ -30,10 +48,27 @@ Template.form.events({
         });
 
         Router.current().redirect('/');
+    },
+
+    'click #autofill': function(e){
+        _.each(Template.instance().$('input, textarea'), function(el){
+            var $el = $(el);
+            var id = $el.attr('id');
+
+            if (id == 'rate' || id == 'fee'){
+                $el.val(100);
+            }
+            else if (id == 'date' || id == 'timeout'){
+                $el.val('2015-02-02');
+            }
+            else {
+                $el.val($el.attr('id'));
+            }
+        });
     }
 });
 
-Template.form.rendered = function(){
+Template.form.onRendered(function(){
 
     // Set up datepicker
     this.$('.datepicker').datepicker({
@@ -45,12 +80,12 @@ Template.form.rendered = function(){
         // Set checkbox status
         this.$('#ownership').prop('checked', this.data.contract.ownership);
     }
-};
+});
 
 // Show print dialog automatically
-Template.contract.rendered = function(){
+Template.contract.onRendered(function(){
     window.print();
-};
+});
 
 Template.contract.events({
 
@@ -81,4 +116,36 @@ Template.load.events({
 
         Meteor.call('new_contract', contract);
     }
+});
+
+Template.registerHelper('pretty_date', function(date){
+    if (date){
+        return date.toString('yyyy-MM-dd');
+    }
+
+    return '';
+});
+
+Template.registerHelper('day_helper', function(date){
+    if (date){
+        return date.getDate();
+    }
+
+    return '';
+});
+
+Template.registerHelper('month_helper', function(date){
+    if (date){
+        return GLOBS.MONTH_NAMES[date.getMonth()];
+    }
+
+    return '';
+});
+
+Template.registerHelper('year_helper', function(date){
+    if (date){
+        return date.getFullYear();
+    }
+
+    return '';
 });

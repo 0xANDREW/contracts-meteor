@@ -31,17 +31,9 @@ Router.route('/load', function(){
 });
 
 Router.route('/contract/:cid/generate', function(){
-    var rv = GLOBS.CONTRACTS.findOne(this.params.cid);
-    var date = Date.parse(rv.date);
-
-    // Add date components
-    rv.day = date.getDate();
-    rv.month = GLOBS.MONTH_NAMES[date.getMonth()];
-    rv.year = date.getFullYear();
-
     this.render('contract', {
         data: {
-            contract: rv
+            contract: GLOBS.CONTRACTS.findOne(this.params.cid)
         }
     });
 });

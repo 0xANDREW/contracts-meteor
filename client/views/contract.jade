@@ -3,7 +3,7 @@ template(name='contract')
     #contract
       h2 {{ title }} Development Agreement
 
-      p This Agreement is made this <u>{{ day }}</u> day of <u>{{ month }}</u>, <u>{{ year }}</u>, between <u>{{ your_company }}</u>, having its principal place of business at <u>{{ your_address }}</u>, and <u>{{ client_name }}</u> having their principal place of business at <u>{{ client_address }}</u>. In consideration of <u>{{ client_name }}</u> retaining <u>{{ your_company }}</u> to conduct an independent service for <u>{{ client_name }}</u>, it is agreed as follows:
+      p This Agreement is made this <u>{{ day_helper date }}</u> day of <u>{{ month_helper date }}</u>, <u>{{ year_helper date }}</u>, between <u>{{ your_company }}</u>, having its principal place of business at <u>{{ your_address }}</u>, and <u>{{ client_name }}</u> having their principal place of business at <u>{{ client_address }}</u>. In consideration of <u>{{ client_name }}</u> retaining <u>{{ your_company }}</u> to conduct an independent service for <u>{{ client_name }}</u>, it is agreed as follows:
   
       ol
         li 
@@ -88,5 +88,5 @@ template(name='contract')
       .col-xs-6 <u>{{ client_contact }}</u>
       .spacer-medium
     
-      .col-xs-6 Date: <u>{{ date }}</u>
+      .col-xs-6 Date: <u>{{ pretty_date date }}</u>
       .col-xs-6 Date: ____________________

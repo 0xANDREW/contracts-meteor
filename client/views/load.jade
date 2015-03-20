@@ -5,7 +5,7 @@ template(name='load')
   +each contracts
     .row(id="{{ _id }}")
       .col-md-3 {{ _id }}
-      .col-md-2 {{ date }}
+      .col-md-2 {{ pretty_date date }}
       .col-md-2 {{ title }}
       .col-md-3
         .btn-group
