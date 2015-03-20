@@ -1,5 +1,7 @@
 template(name='form')
   +with contract
+    input#user_id(type='hidden' value='{{ $.Meteor.userId }}')
+  
     .form-horizontal
       .form-group
         label.col-md-2.control-label Date

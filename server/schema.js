@@ -17,7 +17,8 @@ schemas.Contract = new SimpleSchema({
     fee: { type: Number, optional: true },
     time_detail: { type: String, optional: true },
     timeout: { type: Date, optional: true },
-    ownership: { type: Boolean }
+    ownership: { type: Boolean },
+    user_id: { type: String }
 });
 
 GLOBS.CONTRACTS.attachSchema(schemas.Contract);

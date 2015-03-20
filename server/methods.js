@@ -19,3 +19,7 @@ Meteor.methods({
         return GLOBS.CONTRACTS.remove(cid);
     }
 });
+
+Meteor.publish('user_contracts', function(){
+    return GLOBS.CONTRACTS.find({ user_id: this.userId });
+});

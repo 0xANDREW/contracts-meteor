@@ -44,7 +44,7 @@ Template.form.events({
                 }
                 else {
                     FlashMessages.clear();
-                    Router.current().redirect(s.sprintf('/contract/%s', new_cid));
+                    Router.go(s.sprintf('/contract/%s', new_cid));
                 }
             });
         }
@@ -56,7 +56,7 @@ Template.form.events({
         });
 
         FlashMessages.clear();
-        Router.current().redirect('/');
+        Router.go('/');
     },
 
     'click #autofill': function(e){
@@ -70,7 +70,7 @@ Template.form.events({
             else if (id == 'date' || id == 'timeout'){
                 $el.val('2015-02-02');
             }
-            else {
+            else if (id != 'user_id'){
                 $el.val($el.attr('id'));
             }
         });
@@ -100,7 +100,7 @@ Template.contract.events({
 
     // When displaying print view, single-click goes back
     'click': function(e){
-        Router.current().redirect(s.sprintf('/contract/%s', this._id));
+        Router.go(s.sprintf('/contract/%s', this._id));
     }
 });
 
