@@ -83,9 +83,14 @@ template(name='form')
           input#timeout.form-control.input-sm.datepicker(value="{{ pretty_date timeout }}")
   
         label.col-md-2.control-label Retain ownership
-        .col-md-2
+        .col-md-1
           .checkbox 
             input#ownership(type='checkbox')
+
+        label.col-md-2.control-label 30-day support
+        .col-md-1
+          .checkbox 
+            input#post_support(type='checkbox')
 
     .btn-group
       button#save.btn.btn-primary Save

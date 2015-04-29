@@ -1,7 +1,7 @@
 template(name='contract')
   +with contract
     #contract
-      h2 {{ title }} Development Agreement
+      h2 {{ title }}
 
       p This Agreement is made this <u>{{ day_helper date }}</u> day of <u>{{ month_helper date }}</u>, <u>{{ year_helper date }}</u>, between <u>{{ your_company }}</u>, having its principal place of business at <u>{{ your_address }}</u>, and <u>{{ client_name }}</u> having their principal place of business at <u>{{ client_address }}</u>. In consideration of <u>{{ client_name }}</u> retaining <u>{{ your_company }}</u> to conduct an independent service for <u>{{ client_name }}</u>, it is agreed as follows:
   
@@ -25,7 +25,7 @@ template(name='contract')
               pre {{ time_detail }}
     
           p
-            The following fees shall apply:
+            span The following fees shall apply:
             ul
               +if rate
                 li $<u>{{ rate }}</u>/hr for development to be paid within two weeks of invoice date
@@ -49,9 +49,9 @@ template(name='contract')
           h4 Entire Agreement
           p This agreement represents the full understanding between the parties and there is no other agreement, oral or written, between them, and that this agreement may not be modified without an agreement in writing signed by the party to be charged. This contract is in effect until written notification of termination from either party.
     
-        li
-          h4 Notices
-          p All notices or other documents under this agreement shall be in writing and delivered personally or fax received, or mailed by certified mail, postage prepaid, addressed to <u>{{ your_company }}</u> and <u>{{ client_name }}</u> at their last known addresses.
+        // li
+        //   h4 Notices
+        //   p All notices or other documents under this agreement shall be in writing and delivered personally or fax received, or mailed by certified mail, postage prepaid, addressed to <u>{{ your_company }}</u> and <u>{{ client_name }}</u> at their last known addresses.
     
         li
           h4 Single Points of Contact
@@ -66,8 +66,13 @@ template(name='contract')
           li
             h4 Agreement Timeout
             p <u>{{ client_name }}</u> is responsible for supplying all needed content to <u>{{ your_company }}</u> by <u>{{ timeout }}</u>.
-    
-      .page-break
+
+        .page-break
+
+        +if post_support
+          li
+            h4 Post-production Support
+            p <u>{{ your_company }}</u> will provide thirty (30) days of support after final deployment for major undiscovered issues. This clause is void if the source code is modified by any person other than an employee of <u>{{ your_company }}</u>.
     
       h3 ACCEPTED AND AGREED:
       
