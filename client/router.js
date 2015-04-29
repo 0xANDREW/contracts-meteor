@@ -52,7 +52,7 @@ Router.route('/contract/:cid/generate', {
     template: 'contract',
 
     waitOn: function(){
-        return Meteor.subscribe('contract', this.params.cid);
+        return Meteor.subscribe('user_contracts');
     },
 
     data: function(){
