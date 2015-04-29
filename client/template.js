@@ -89,12 +89,8 @@ Template.form.onRendered(function(){
         // Set checkbox status
         this.$('#ownership').prop('checked', this.data.contract.ownership);
         this.$('#post_support').prop('checked', this.data.contract.post_support);
+        this.$('#deposit').prop('checked', this.data.contract.deposit);
     }
-});
-
-// Show print dialog automatically
-Template.contract.onRendered(function(){
-    window.print();
 });
 
 Template.contract.events({

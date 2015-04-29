@@ -56,8 +56,18 @@ Router.route('/contract/:cid/generate', {
     },
 
     data: function(){
+        var c = GLOBS.CONTRACTS.findOne(this.params.cid);
+        
+        if (c.fee && c.deposit){
+            c.deposit_amount = c.fee / 2;
+        }
+
+        if (c.fee || c.rate){
+            c.fee_or_rate = true;
+        }
+
         return {
-            contract: GLOBS.CONTRACTS.findOne(this.params.cid)
+            contract: c
         };
     }
 });

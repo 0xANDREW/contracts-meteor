@@ -81,7 +81,8 @@ template(name='form')
         label.col-md-2.control-label Timeout date
         .col-md-3
           input#timeout.form-control.input-sm.datepicker(value="{{ pretty_date timeout }}")
-  
+
+      .form-group
         label.col-md-2.control-label Retain ownership
         .col-md-1
           .checkbox 
@@ -91,6 +92,11 @@ template(name='form')
         .col-md-1
           .checkbox 
             input#post_support(type='checkbox')
+
+        label.col-md-2.control-label 50% deposit
+        .col-md-1
+          .checkbox 
+            input#deposit(type='checkbox')
 
     .btn-group
       button#save.btn.btn-primary Save

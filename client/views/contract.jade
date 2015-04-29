@@ -23,15 +23,21 @@ template(name='contract')
             p
               spane Time Detail:
               pre {{ time_detail }}
-    
-          p
-            span The following fees shall apply:
-            ul
-              +if rate
-                li $<u>{{ rate }}</u>/hr for development to be paid within two weeks of invoice date
-    
-              +if fee
-                li $<u>{{ fee }}</u> flat fee
+
+          +if fee_or_rate
+            p
+              span The following fees shall apply:
+              ul
+                +if rate
+                  li $<u>{{ rate }}</u>/hr for development to be paid within two weeks of invoice date
+      
+                +if fee
+                  li $<u>{{ fee }}</u> flat fee
+  
+                  +if deposit_amount
+                    li $<u>{{ deposit_amount }}</u> deposit before work begins
+
+          p Payments must be made within two (2) weeks of invoice date, at which point a late fee of 1.5% of invoice amount will be applied. An additional late fee of 1.5% of invoice amount will be applied each month after the due date.
     
         li
           h4 Confidentiality
@@ -48,10 +54,6 @@ template(name='contract')
         li
           h4 Entire Agreement
           p This agreement represents the full understanding between the parties and there is no other agreement, oral or written, between them, and that this agreement may not be modified without an agreement in writing signed by the party to be charged. This contract is in effect until written notification of termination from either party.
-    
-        // li
-        //   h4 Notices
-        //   p All notices or other documents under this agreement shall be in writing and delivered personally or fax received, or mailed by certified mail, postage prepaid, addressed to <u>{{ your_company }}</u> and <u>{{ client_name }}</u> at their last known addresses.
     
         li
           h4 Single Points of Contact
@@ -82,7 +84,8 @@ template(name='contract')
       .spacer-medium
         
       .col-xs-1 BY:
-      .col-xs-5.sig
+      .col-xs-5
+        img#sig(src='/sig.png')
       .col-xs-6 
         div BY: ______________________
         .spacer-small

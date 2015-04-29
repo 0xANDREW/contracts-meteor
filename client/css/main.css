@@ -3,6 +3,10 @@
         display: block;
         page-break-before: always;
     }
+
+    #login-buttons {
+        display: none;
+    }
 }
 
 .spacer-small {
@@ -24,11 +28,8 @@ body {
     width: 8.5in;
 }
 
-.sig {
-    background: url('andrew-sig.png');
-    background-repeat: no-repeat;
+#sig {
     height: 50px;
-    background-size: contain;
 }
 
 pre {
